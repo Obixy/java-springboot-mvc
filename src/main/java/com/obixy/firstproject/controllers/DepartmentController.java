@@ -19,23 +19,23 @@ import com.obixy.firstproject.repositories.DepartmentRepository;
 public class DepartmentController {
 
 	@Autowired
-	private DepartmentRepository repository;
+	private DepartmentRepository departmentRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Department>> findAll() {
-		List<Department> departments = repository.findAll();
+		List<Department> departments = departmentRepository.findAll();
 		return ResponseEntity.ok().body(departments);
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Department> findById(@PathVariable Long id) {
-		Department department = repository.findById(id).get();
+		Department department = departmentRepository.findById(id).get();
 		return ResponseEntity.ok().body(department);
 	}
 
 	@PostMapping
 	public Department insert(@RequestBody Department employee) {
-		return repository.save(employee);
+		return departmentRepository.save(employee);
 	}
 
 }

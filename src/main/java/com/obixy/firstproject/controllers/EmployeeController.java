@@ -19,23 +19,23 @@ import com.obixy.firstproject.repositories.EmployeeRepository;
 public class EmployeeController {
 
 	@Autowired
-	private EmployeeRepository repository;
+	private EmployeeRepository employeeRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Employee>> findAll() {
-		List<Employee> employees = repository.findAll();
+		List<Employee> employees = employeeRepository.findAll();
 		return ResponseEntity.ok().body(employees);
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Employee> findById(@PathVariable Long id) {
-		Employee employee = repository.findById(id).get();
+		Employee employee = employeeRepository.findById(id).get();
 		return ResponseEntity.ok().body(employee);
 	}
 
 	@PostMapping
 	public Employee insert(@RequestBody Employee employee) {
-		return repository.save(employee);
+		return employeeRepository.save(employee);
 	}
 
 }
