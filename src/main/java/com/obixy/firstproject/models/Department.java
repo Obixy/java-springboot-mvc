@@ -1,22 +1,25 @@
 package com.obixy.firstproject.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tb_department")
 public class Department {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-
 	
-	/*
-	 * Diz que não vai serealizar a lista de 'Employees'
-	 * */
-	@JsonIgnore
-	private List<Employee> employees = new ArrayList<>();
+	public Department() {
+		
+	}
 
 	public Department(Long id, String name) {
 		this.id = id;
@@ -37,10 +40,6 @@ public class Department {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Employee> getEmployees() {
-		return employees;
 	}
 
 	@Override
